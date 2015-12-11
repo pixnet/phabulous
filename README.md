@@ -46,3 +46,17 @@ git clone git@github.com:etcinit/phabulous.git
 cd phabulous
 make
 ```
+## Custom make for linux machines
+### Fetch go dependencies
+```
+go get github.com/mitchellh/gox
+go get github.com/kr/pretty
+go get github.com/jacobstr/confer
+go get github.com/Sirupsen/logrus
+go get github.com/codegangsta/cli
+go get github.com/etcinit/phabulous/app
+go get github.com/facebookgo/inject
+```
+### Build
+git clone git@github.com:etcinit/phabulous.git
+cd phabulous && make
