@@ -47,7 +47,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 		panic(err)
 	}
 
-        storyText := ":coffee: " + c.Request.PostForm.Get("storyText")
+        storyText := ":coffee: " + c.Request.PostForm.Get("storyText") + " --- "
 
 	if res.URI != "" {
 		storyText += " (<" + res.URI + "|More info>)"
