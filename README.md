@@ -60,4 +60,4 @@ go get github.com/facebookgo/inject
 ```
 ### Build
 git clone git@github.com:etcinit/phabulous.git
-cd phabulous && make
+cd phabulous && make dep && make
