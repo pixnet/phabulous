@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/pixnet/gonduit/requests"
+	"github.com/etcinit/gonduit/requests"
 	"github.com/pixnet/phabulous/app/messages"
 	"github.com/nlopes/slack"
 )

@@ -1,6 +1,6 @@
 package messages
 
-import "github.com/pixnet/gonduit/constants"
+import "github.com/etcinit/gonduit/constants"
 
 // Icon is the type of the PHID.
 type Icon string

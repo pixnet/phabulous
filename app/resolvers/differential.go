@@ -1,7 +1,7 @@
 package resolvers
 
 import (
-	"github.com/pixnet/gonduit/requests"
+	"github.com/etcinit/gonduit/requests"
 	"github.com/pixnet/phabulous/app/factories"
 	"github.com/jacobstr/confer"
 )

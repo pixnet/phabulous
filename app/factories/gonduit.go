@@ -3,8 +3,8 @@ package factories
 import (
 	"errors"
 
-	"github.com/pixnet/gonduit"
-	"github.com/pixnet/gonduit/core"
+	"github.com/etcinit/gonduit"
+	"github.com/etcinit/gonduit/core"
 	"github.com/jacobstr/confer"
 )
 
