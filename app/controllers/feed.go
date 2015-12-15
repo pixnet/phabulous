@@ -56,7 +56,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 	if res.URI != "" {
 		storyText += " (<" + res.URI + "|More info>)"
 	}
-        storyText += "..."
+        storyText += "----"
 
 	phidType := constants.PhidType(res.Type)
 	icon := messages.PhidTypeToIcon(phidType)
