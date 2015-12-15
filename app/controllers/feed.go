@@ -1,5 +1,6 @@
 package controllers
 
+import "regexp"
 import (
 	"github.com/Sirupsen/logrus"
 	"github.com/etcinit/gonduit/constants"
@@ -48,6 +49,9 @@ func (f *FeedController) postReceive(c *gin.Context) {
 	}
 
         storyText := ":coffee: " + c.Request.PostForm.Get("storyText") + " --- "
+
+        re := regexp.MustCompile(" (authored by [.]+)")
+        storyText = re.ReplaceAllString(storyText, "")
 
 	if res.URI != "" {
 		storyText += " (<" + res.URI + "|More info>)" + " ..."
