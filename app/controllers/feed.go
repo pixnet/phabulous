@@ -48,13 +48,13 @@ func (f *FeedController) postReceive(c *gin.Context) {
 		panic(err)
 	}
 
-        storyText := ":coffee: " + c.Request.PostForm.Get("storyText") + " --- "
+        storyText := ":coffee: " + c.Request.PostForm.Get("storyText")
 
         re := regexp.MustCompile(" (authored by [.]+)")
         storyText = re.ReplaceAllString(storyText, "")
 
 	if res.URI != "" {
-		storyText += " (<" + res.URI + "|More info>)" + " ..."
+		storyText += " (<" + res.URI + "|More info>)"
 	}
 
 	phidType := constants.PhidType(res.Type)
