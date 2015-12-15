@@ -50,8 +50,8 @@ func (f *FeedController) postReceive(c *gin.Context) {
 
         storyText := ":coffee: " + c.Request.PostForm.Get("storyText")
 
-        re := regexp.MustCompile("\\(authored by ([A-Za-z0-9.<>@\\s]+)\\)")
-        storyText = re.ReplaceAllString(storyText, "")
+        re := regexp.MustCompile("(r([A-Z]+)([a-z0-9]{12})): (.+) (\\(.+\\))")
+        storyText = re.ReplaceAllString(storyText, "$1: `$4`")
 
 	if res.URI != "" {
 		storyText += " (<" + res.URI + "|More info>)"
