@@ -1,7 +1,7 @@
 package controllers
 
-import "regexp"
 import (
+        "regexp"
 	"github.com/Sirupsen/logrus"
 	"github.com/etcinit/gonduit/constants"
 	"github.com/pixnet/phabulous/app/bot"
