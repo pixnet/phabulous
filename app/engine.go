@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/etcinit/phabulous/app/controllers"
+	"github.com/pixnet/phabulous/app/controllers"
 	"github.com/gin-gonic/gin"
 	"github.com/jacobstr/confer"
 )

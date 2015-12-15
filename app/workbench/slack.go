@@ -2,9 +2,9 @@ package workbench
 
 import (
 	"github.com/codegangsta/cli"
-	"github.com/etcinit/phabulous/app/bot"
-	"github.com/etcinit/phabulous/app/factories"
-	"github.com/etcinit/phabulous/app/resolvers"
+	"github.com/pixnet/phabulous/app/bot"
+	"github.com/pixnet/phabulous/app/factories"
+	"github.com/pixnet/phabulous/app/resolvers"
 	"github.com/jacobstr/confer"
 	"github.com/nlopes/slack"
 )

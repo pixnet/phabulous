@@ -4,8 +4,8 @@ import (
 	"math/rand"
 	"regexp"
 
-	"github.com/etcinit/phabulous/app/factories"
-	"github.com/etcinit/phabulous/app/messages"
+	"github.com/pixnet/phabulous/app/factories"
+	"github.com/pixnet/phabulous/app/messages"
 	"github.com/nlopes/slack"
 )
 

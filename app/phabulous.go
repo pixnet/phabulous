@@ -2,8 +2,8 @@ package app
 
 import (
 	"github.com/Sirupsen/logrus"
-	"github.com/etcinit/phabulous/app/bot"
-	"github.com/etcinit/phabulous/app/workbench"
+	"github.com/pixnet/phabulous/app/bot"
+	"github.com/pixnet/phabulous/app/workbench"
 	"github.com/jacobstr/confer"
 	"github.com/nlopes/slack"
 )

@@ -5,7 +5,7 @@ import (
 
 	"github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
-	"github.com/etcinit/phabulous/app/bot"
+	"github.com/pixnet/phabulous/app/bot"
 	"github.com/jacobstr/confer"
 )
 
