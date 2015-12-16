@@ -63,7 +63,8 @@ func (f *FeedController) postReceive(c *gin.Context) {
         storyText = re.ReplaceAllString(storyText, "$1: `$4`")
 
 	if res.URI != "" {
-		storyText += " (<" + res.URI + "|More info>)"
+                re = regexp.MustCompile("(r([A-Z]+)([a-z0-9]{12})):")
+                storyText = re.ReplaceAllString(storyText, "<" + res.URI + "|$1>")
 	}
 
 	phidType := constants.PhidType(res.Type)
