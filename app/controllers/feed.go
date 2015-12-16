@@ -57,7 +57,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 
         symbol := animals[rnd.Intn(len(animals))]
 
-        storyText := symbol + c.Request.PostForm.Get("storyText")
+        storyText := symbol + " " + c.Request.PostForm.Get("storyText")
 
         re := regexp.MustCompile("(r([A-Z]+)([a-z0-9]{12})): (.+) (\\(.+\\))")
         storyText = re.ReplaceAllString(storyText, "$1: `$4`")
