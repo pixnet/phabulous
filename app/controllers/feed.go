@@ -86,7 +86,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
                 )
 
                 // Mention commit author
-                if storyAuthorRes.Name != commitAuthorName {
+                if err == nil && storyAuthorRes.Name != commitAuthorName {
                     storyText += " @" + commitAuthorName
                 }
         }
