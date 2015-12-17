@@ -65,7 +65,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 
 	if res.URI != "" {
                 re = regexp.MustCompile("(r([A-Z]+)([a-z0-9]{12})):")
-                storyText = re.ReplaceAllString(storyText, "<" + res.URI + "|$1>")
+                storyText = re.ReplaceAllString(storyText, "<" + res.URI + "|$1>:")
 	}
 
 
@@ -75,7 +75,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 			PHIDs: []string{phid},
 		},
 	)
-        r, _ := regexp.Compile("(rTEST([a-z0-9]{12})):")
+        r, _ := regexp.Compile("(rTEST([a-z0-9]{12}))")
         if err == nil && r.MatchString(storyText) {
                 commit := commits.Data[phid]
                 storyText += " [DEBUG]: AuthorEmail = " + commit.AuthorEmail + ", Committer = " + commit.Committer + ", storyData[authorPHID] = " + string(c.Request.PostForm.Get("storyData[authorPHID]"))
