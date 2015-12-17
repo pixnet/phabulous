@@ -1,7 +1,6 @@
 package controllers
 
 import (
-        "encoding/json"
         "math/rand"
         "regexp"
         "time"
@@ -89,14 +88,6 @@ func (f *FeedController) postReceive(c *gin.Context) {
                 // Mention commit author
                 if storyAuthorRes.Name != commitAuthorName {
                     storyText += " @" + commitAuthorName
-                }
-
-                storyText += " [DEBUG]: AuthorEmail = " + commit.AuthorEmail + ", Committer = " + commit.Committer
-                storyText += ", storyAuthorRes.Name = " + storyAuthorRes.Name + ", commitAuthorName = " + commitAuthorName
-
-                storyJson, err := json.Marshal(c.Request.PostForm)
-                if (err == nil) {
-                    storyText += ", storyData = ```" + string(storyJson) + "```"
                 }
         }
 
