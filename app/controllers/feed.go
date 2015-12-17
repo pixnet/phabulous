@@ -81,7 +81,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
                 commit := commits.Data[phid]
                 storyText += " [DEBUG]: AuthorEmail = " + commit.AuthorEmail + ", Committer = " + commit.Committer
 
-                storyJson, err := json.Marshal(string(c.Request.PostForm.Get("storyData")))
+                storyJson, err := json.Marshal(c.Request.PostForm)
                 if (err == nil) {
                     storyText += ", storyData = ```" + string(storyJson) + "```"
                 }
