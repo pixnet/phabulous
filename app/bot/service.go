@@ -46,6 +46,7 @@ func (s *SlackService) SimplePost(
 			Username: user,
 			IconURL:  string(icon),
 			AsUser:   asUser,
+                        Parse: "none",
 		},
 	)
 }
