@@ -1,6 +1,7 @@
 package controllers
 
 import (
+        "encoding/json"
         "math/rand"
         "regexp"
         "time"
@@ -78,7 +79,12 @@ func (f *FeedController) postReceive(c *gin.Context) {
         r, _ := regexp.Compile("(rTEST([a-z0-9]{12}))")
         if err == nil && r.MatchString(storyText) {
                 commit := commits.Data[phid]
-                storyText += " [DEBUG]: AuthorEmail = " + commit.AuthorEmail + ", Committer = " + commit.Committer + ", storyData[authorPHID] = " + string(c.Request.PostForm.Get("storyData[authorPHID]"))
+                storyText += " [DEBUG]: AuthorEmail = " + commit.AuthorEmail + ", Committer = " + commit.Committer
+
+                storyJson, err := json.Marshal(string(c.Request.PostForm.Get("storyData")))
+                if (err == nil) {
+                    storyText += ", storyData = ```" + string(storyJson) + "```"
+                }
         }
 
 
