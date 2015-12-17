@@ -89,7 +89,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
                 // Mention commit author
                 slackuser, err := f.Slacker.GetUserByEmail(commit.AuthorEmail)
                 if err == nil && storyAuthorRes.Name != commitAuthorName {
-                    storyText += " ---" + string(slackuser.ID)
+                    storyText += " <@" + string(slackuser.ID) + "|" + commitAuthorName + ">"
                 }
         }
 
