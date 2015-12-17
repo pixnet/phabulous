@@ -65,3 +65,19 @@ func (s *SlackService) FeedPost(storyText string) error {
 func (s *SlackService) GetFeedChannel() string {
 	return s.Config.GetString("channels.feed")
 }
+
+// GetUser return user given email
+func (s *SlackService) GetUserByEmail(email string) (*slack.User, error) {
+    users, err := s.Slack.GetUsers();
+    if err != nil {
+        return nil, err
+    }
+
+    for _, user := range users {
+        if user.Profile.Email == email {
+            return &user, nil
+        }
+    }
+
+    return nil, nil
+}
