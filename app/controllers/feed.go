@@ -6,6 +6,7 @@ import (
         "time"
 	"github.com/Sirupsen/logrus"
 	"github.com/etcinit/gonduit/constants"
+	"github.com/etcinit/gonduit/requests"
 	"github.com/pixnet/phabulous/app/bot"
 	"github.com/pixnet/phabulous/app/factories"
 	"github.com/pixnet/phabulous/app/messages"
@@ -66,6 +67,20 @@ func (f *FeedController) postReceive(c *gin.Context) {
                 re = regexp.MustCompile("(r([A-Z]+)([a-z0-9]{12})):")
                 storyText = re.ReplaceAllString(storyText, "<" + res.URI + "|$1>")
 	}
+
+
+        phid := string(c.Request.PostForm.Get("storyData[objectPHID]"))
+	commits, err := conduit.DiffusionQueryCommits(
+		requests.DiffusionQueryCommitsRequest{
+			PHIDs: []string{phid},
+		},
+	)
+        r, _ := regexp.Compile("(rTEST([a-z0-9]{12})):")
+        if err == nil && r.MatchString(storyText) {
+                commit := commits.Data[phid]
+                storyText += " [DEBUG]: AuthorEmail = " + commit.AuthorEmail + ", Committer = " + commit.Committer + ", storyData[authorPHID] = " + string(c.Request.PostForm.Get("storyData[authorPHID]"))
+        }
+
 
 	phidType := constants.PhidType(res.Type)
 	icon := messages.PhidTypeToIcon(phidType)
