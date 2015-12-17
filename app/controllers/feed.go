@@ -77,9 +77,22 @@ func (f *FeedController) postReceive(c *gin.Context) {
 		},
 	)
         r, _ := regexp.Compile("(rTEST([a-z0-9]{12}))")
-        if err == nil && r.MatchString(storyText) {
+        r2, _ := regexp.Compile("(added a comment|raised a concern|added inline comments)")
+        if err == nil && r.MatchString(storyText) && r2.MatchString(storyText) {
                 commit := commits.Data[phid]
+                regEmail, _ := regexp.Compile("(([a-z_0-9][-._a-z0-9]*[a-z_0-9])@[a-z_0-9][-._a-z0-9]*[a-z_0-9].[a-z_0-9]{2,3})")
+                commitAuthorName := regEmail.FindStringSubmatch(commit.AuthorEmail)[2]
+                storyAuthorRes, err := conduit.PHIDQuerySingle(
+                    string(c.Request.PostForm.Get("storyAuthorPHID")),
+                )
+
+                // Mention commit author
+                if storyAuthorRes.Name != commitAuthorName {
+                    storyText += " @" + commitAuthorName
+                }
+
                 storyText += " [DEBUG]: AuthorEmail = " + commit.AuthorEmail + ", Committer = " + commit.Committer
+                storyText += ", storyAuthorRes.Name = " + storyAuthorRes.Name + ", commitAuthorName = " + commitAuthorName
 
                 storyJson, err := json.Marshal(c.Request.PostForm)
                 if (err == nil) {
