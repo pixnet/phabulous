@@ -1,7 +1,6 @@
 package controllers
 
 import (
-        "fmt"
         "math/rand"
         "regexp"
         "time"
@@ -91,10 +90,6 @@ func (f *FeedController) postReceive(c *gin.Context) {
                 slackuser, err := f.Slacker.GetUserByEmail(commit.AuthorEmail)
                 if err == nil && storyAuthorRes.Name != commitAuthorName {
                     storyText += " <@U" + string(slackuser.ID) + "|" + commitAuthorName + ">"
-                    fmt.Println(string(slackuser.ID))
-                } else {
-                    storyText += " [DEBUG]: error "
-                    fmt.Println(err)
                 }
         }
 
