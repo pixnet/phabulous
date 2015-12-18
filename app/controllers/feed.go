@@ -75,7 +75,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 			PHIDs: []string{phid},
 		},
 	)
-        r2, _ := regexp.Compile("(added a comment|raised a concern|added inline comments)")
+        r2, _ := regexp.Compile("(added a comment|raised a concern|added inline comments|accepted)")
         if err == nil && r2.MatchString(storyText) {
                 commit := commits.Data[phid]
                 regEmail, _ := regexp.Compile("(([a-z_0-9][-._a-z0-9]*[a-z_0-9])@[a-z_0-9][-._a-z0-9]*[a-z_0-9].[a-z_0-9]{2,3})")
