@@ -131,7 +131,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 		}
 
 		if channelName != "" {
-			f.Slacker.SimplePost(channelName, storyText, icon, false)
+			f.Slacker.SimplePost(channelName, storyText, icon, false, iconEmoji)
 		}
 		break
 	case constants.PhidTypeDifferentialRevision:
@@ -141,7 +141,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 		}
 
 		if channelName != "" {
-			f.Slacker.SimplePost(channelName, storyText, icon, false)
+			f.Slacker.SimplePost(channelName, storyText, icon, false, iconEmoji)
 		}
 		break
 	}
