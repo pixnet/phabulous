@@ -92,6 +92,21 @@ func (f *FeedController) postReceive(c *gin.Context) {
                 }
         }
 
+        iconEmoji := ""
+        regComment, _ := regexp.Compile("(added a comment|added inline comments)")
+        if regComment.MatchString(storyText) {
+            iconEmoji = ":memo:"
+        }
+
+        regConcern, _ := regexp.Compile("raised a concern")
+        if regConcern.MatchString(storyText) {
+            iconEmoji = ":raising_hand:"
+        }
+
+        regAccepted, _ := regexp.Compile("accepted")
+        if regAccepted.MatchString(storyText) {
+            iconEmoji = ":heavy_check_mark:"
+        }
 
 	phidType := constants.PhidType(res.Type)
 	icon := messages.PhidTypeToIcon(phidType)
@@ -106,7 +121,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 		}
 
 		if channelName != "" {
-			f.Slacker.SimplePost(channelName, storyText, icon, false)
+			f.Slacker.SimplePost(channelName, storyText, icon, false, iconEmoji)
 		}
 		break
 	case constants.PhidTypeTask:

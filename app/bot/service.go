@@ -32,6 +32,7 @@ func (s *SlackService) SimplePost(
 	storyText string,
 	icon messages.Icon,
 	asUser bool,
+        iconEmoji ...string,
 ) {
 	user := s.Config.GetString("slack.username")
 
@@ -39,12 +40,18 @@ func (s *SlackService) SimplePost(
 		user = s.Bot.slackInfo.User.Name
 	}
 
+        emoji := ""
+        if len(iconEmoji) > 0 {
+            emoji = iconEmoji[0]
+        }
+
 	s.Slack.PostMessage(
 		channelName,
 		storyText,
 		slack.PostMessageParameters{
 			Username: user,
 			IconURL:  string(icon),
+                        IconEmoji: string(emoji),
 			AsUser:   asUser,
                         Parse: "none",
 		},
