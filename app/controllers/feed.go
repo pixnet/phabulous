@@ -127,6 +127,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 		}
 
                 fmt.Println("before checking channelName ... ")
+                fmt.Println("channelName = ", channelName)
 		if channelName != "" {
                         fmt.Println("case constants.PhidTypeCommit: " + iconEmoji)
 			f.Slacker.SimplePost(channelName, storyText, icon, false, iconEmoji)
