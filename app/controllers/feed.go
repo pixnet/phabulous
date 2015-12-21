@@ -115,9 +115,11 @@ func (f *FeedController) postReceive(c *gin.Context) {
 	phidType := constants.PhidType(res.Type)
 	icon := messages.PhidTypeToIcon(phidType)
 
+        icon = messages.StoryTextToIcon(storyText)
+
         fmt.Println("FeedPost() = " + storyText)
         fmt.Println("phidType = " + phidType)
-	f.Slacker.FeedPost(storyText, iconEmoji)
+	f.Slacker.FeedPost(storyText, icon)
 
 	switch phidType {
 	case constants.PhidTypeCommit:

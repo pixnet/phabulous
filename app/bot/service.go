@@ -64,14 +64,14 @@ func (s *SlackService) SimplePost(
 }
 
 // FeedPost posts a message to Slack on the default bot channel.
-func (s *SlackService) FeedPost(storyText string, iconArgs ...string) error {
+func (s *SlackService) FeedPost(storyText string, iconArgs ...messages.Icon) error {
 	if s.GetFeedChannel() == "" {
 		return ErrMissingFeedChannel
 	}
 
         if len(iconArgs) > 0 {
                 fmt.Println("len(iconArgs) > 0, ", iconArgs[0])
-                s.SimplePost(s.GetFeedChannel(), storyText, messages.IconDefault, false, iconArgs[0])
+                s.SimplePost(s.GetFeedChannel(), storyText, iconArgs[0], false)
         } else {
                 s.SimplePost(s.GetFeedChannel(), storyText, messages.IconDefault, false)
         }
