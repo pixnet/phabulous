@@ -10,7 +10,7 @@ type Icon string
 
 const (
 	// IconDefault is used for regular messages.
-	IconDefault Icon = "http://i.imgur.com/7Hzgo9Y.png"
+        IconDefault Icon = "http://i.imgur.com/YjbdkOs.png"
 
 	// IconCommits is used for commit-related messages.
 	IconCommits Icon = "http://i.imgur.com/v8ReRKx.png"
