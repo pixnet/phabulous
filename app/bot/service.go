@@ -70,6 +70,7 @@ func (s *SlackService) FeedPost(storyText string, iconArgs ...string) error {
 	}
 
         if len(iconArgs) > 0 {
+                fmt.Println("len(iconArgs) > 0, ", iconArgs[0])
                 s.SimplePost(s.GetFeedChannel(), storyText, messages.IconDefault, false, iconArgs[0])
         } else {
                 s.SimplePost(s.GetFeedChannel(), storyText, messages.IconDefault, false)
