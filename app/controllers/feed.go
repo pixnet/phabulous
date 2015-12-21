@@ -116,6 +116,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 	icon := messages.PhidTypeToIcon(phidType)
 
         fmt.Println("FeedPost() = " + storyText)
+        fmt.Println("phidType = " + phidType)
 	f.Slacker.FeedPost(storyText)
 
 	switch phidType {
@@ -125,6 +126,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 			f.Logger.Error(err)
 		}
 
+                fmt.Println("before checking channelName ... ")
 		if channelName != "" {
                         fmt.Println("case constants.PhidTypeCommit: " + iconEmoji)
 			f.Slacker.SimplePost(channelName, storyText, icon, false, iconEmoji)
