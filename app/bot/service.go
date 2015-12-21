@@ -42,6 +42,7 @@ func (s *SlackService) SimplePost(
 	}
 
         emoji := ""
+        fmt.Println(string(iconEmoji))
         if len(iconEmoji) > 0 {
             emoji = iconEmoji[0]
             fmt.Println("emoji = " + emoji)
