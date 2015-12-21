@@ -2,6 +2,7 @@ package bot
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/Sirupsen/logrus"
 	"github.com/pixnet/phabulous/app/factories"
@@ -43,6 +44,7 @@ func (s *SlackService) SimplePost(
         emoji := ""
         if len(iconEmoji) > 0 {
             emoji = iconEmoji[0]
+            fmt.Println("emoji = " + emoji)
         }
 
 	s.Slack.PostMessage(
