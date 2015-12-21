@@ -117,7 +117,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 
         fmt.Println("FeedPost() = " + storyText)
         fmt.Println("phidType = " + phidType)
-	f.Slacker.FeedPost(storyText)
+	f.Slacker.FeedPost(storyText, iconEmoji)
 
 	switch phidType {
 	case constants.PhidTypeCommit:
