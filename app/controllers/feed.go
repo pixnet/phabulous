@@ -107,6 +107,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
         if regAccepted.MatchString(storyText) {
             iconEmoji = ":heavy_check_mark:"
         }
+        storyText += " " + iconEmoji
 
 	phidType := constants.PhidType(res.Type)
 	icon := messages.PhidTypeToIcon(phidType)
