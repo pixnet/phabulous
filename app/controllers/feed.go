@@ -115,6 +115,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 	phidType := constants.PhidType(res.Type)
 	icon := messages.PhidTypeToIcon(phidType)
 
+        fmt.Println("FeedPost() = " + storyText)
 	f.Slacker.FeedPost(storyText)
 
 	switch phidType {
