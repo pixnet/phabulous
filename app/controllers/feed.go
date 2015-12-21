@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
         "math/rand"
         "regexp"
         "time"
@@ -124,6 +125,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 		}
 
 		if channelName != "" {
+                        fmt.Println("case constants.PhidTypeCommit: " + iconEmoji)
 			f.Slacker.SimplePost(channelName, storyText, icon, false, iconEmoji)
 		}
 		break
@@ -134,6 +136,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 		}
 
 		if channelName != "" {
+                        fmt.Println("case constants.PhidTypeTask: " + iconEmoji)
 			f.Slacker.SimplePost(channelName, storyText, icon, false, iconEmoji)
 		}
 		break
@@ -144,6 +147,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 		}
 
 		if channelName != "" {
+                        fmt.Println("case constants.PhidTypeDifferentialRevision: " + iconEmoji)
 			f.Slacker.SimplePost(channelName, storyText, icon, false, iconEmoji)
 		}
 		break
