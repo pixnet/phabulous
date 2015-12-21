@@ -108,7 +108,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 
         regAccepted, _ := regexp.Compile("accepted")
         if regAccepted.MatchString(storyText) {
-            iconEmoji = ":heavy_check_mark:"
+            iconEmoji = ":white_check_mark:"
         }
         storyText += " " + iconEmoji
 
