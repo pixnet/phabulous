@@ -2,7 +2,6 @@ package bot
 
 import (
 	"errors"
-	"fmt"
 
 	"github.com/Sirupsen/logrus"
 	"github.com/pixnet/phabulous/app/factories"
@@ -42,12 +41,9 @@ func (s *SlackService) SimplePost(
 	}
 
         emoji := ""
-        fmt.Println("iconEmoji count = ", len(iconEmoji))
-        fmt.Println(iconEmoji)
 
         if len(iconEmoji) > 0 {
             emoji = iconEmoji[0]
-            fmt.Println("emoji = " + emoji)
         }
 
 	s.Slack.PostMessage(
@@ -70,7 +66,6 @@ func (s *SlackService) FeedPost(storyText string, iconArgs ...messages.Icon) err
 	}
 
         if len(iconArgs) > 0 {
-                fmt.Println("len(iconArgs) > 0, ", iconArgs[0])
                 s.SimplePost(s.GetFeedChannel(), storyText, iconArgs[0], false)
         } else {
                 s.SimplePost(s.GetFeedChannel(), storyText, messages.IconDefault, false)

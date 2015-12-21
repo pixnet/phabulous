@@ -25,5 +25,4 @@ func (p *Phabulous) Boot() {
 	p.Slacker.Slack = slack.New(
 		p.Config.GetString("slack.token"),
 	)
-	p.Slacker.Slack.SetDebug(true)
 }

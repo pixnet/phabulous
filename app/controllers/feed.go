@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
         "math/rand"
         "regexp"
         "time"
@@ -117,8 +116,6 @@ func (f *FeedController) postReceive(c *gin.Context) {
 
         icon = messages.StoryTextToIcon(storyText)
 
-        fmt.Println("FeedPost() = " + storyText)
-        fmt.Println("phidType = " + phidType)
 	f.Slacker.FeedPost(storyText, icon)
 
 	switch phidType {
@@ -128,10 +125,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
 			f.Logger.Error(err)
 		}
 
-                fmt.Println("before checking channelName ... ")
-                fmt.Println("channelName = ", channelName)
 		if channelName != "" {
-                        fmt.Println("case constants.PhidTypeCommit: " + iconEmoji)
 			f.Slacker.SimplePost(channelName, storyText, icon, false, iconEmoji)
 		}
 		break
@@ -142,7 +136,6 @@ func (f *FeedController) postReceive(c *gin.Context) {
 		}
 
 		if channelName != "" {
-                        fmt.Println("case constants.PhidTypeTask: " + iconEmoji)
 			f.Slacker.SimplePost(channelName, storyText, icon, false, iconEmoji)
 		}
 		break
@@ -153,7 +146,6 @@ func (f *FeedController) postReceive(c *gin.Context) {
 		}
 
 		if channelName != "" {
-                        fmt.Println("case constants.PhidTypeDifferentialRevision: " + iconEmoji)
 			f.Slacker.SimplePost(channelName, storyText, icon, false, iconEmoji)
 		}
 		break
