@@ -1,9 +1,7 @@
 package controllers
 
 import (
-        "math/rand"
         "regexp"
-        "time"
 	"github.com/Sirupsen/logrus"
 	"github.com/etcinit/gonduit/constants"
 	"github.com/etcinit/gonduit/requests"
@@ -50,9 +48,6 @@ func (f *FeedController) postReceive(c *gin.Context) {
 	if err != nil {
 		panic(err)
 	}
-
-        seed := rand.NewSource(time.Now().UnixNano() + 1)
-        rnd := rand.New(seed)
 
         storyText := c.Request.PostForm.Get("storyText")
 
