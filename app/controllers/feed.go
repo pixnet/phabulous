@@ -54,11 +54,7 @@ func (f *FeedController) postReceive(c *gin.Context) {
         seed := rand.NewSource(time.Now().UnixNano() + 1)
         rnd := rand.New(seed)
 
-        animals := []string{ ":cat:", ":dog:", ":mouse:", ":hamster:", ":rabbit:", ":wolf:", ":frog:", ":tiger:", ":koala:", ":bear:", ":pig:", ":cow:", ":boar:", ":monkey_face:", ":horse:", ":camel:", ":sheep:", ":elephant:", ":panda_face:", ":snake:", ":bird:", ":baby_chick:", ":chicken:", ":penguin:", ":turtle:", ":bug:", ":honeybee:", ":ant:", ":snail:", ":tropical_fish:", ":whale:", ":dolphin:", ":dragon:", ":rooster:", ":dragon_face:", ":crocodile:", ":poodle:", ":octopus:" }
-
-        symbol := animals[rnd.Intn(len(animals))]
-
-        storyText := symbol + " " + c.Request.PostForm.Get("storyText")
+        storyText := c.Request.PostForm.Get("storyText")
 
         re := regexp.MustCompile("(r([A-Z]+)([a-z0-9]{12})): (.+) (\\(.+\\))")
         storyText = re.ReplaceAllString(storyText, "$1: `$4`")
